@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>女性就业率与社会失业率图表</title>
+    <script src="js/echarts.min.js"></script>
+    <style>
+        #container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #chart1, #chart2 {
+            width: 48%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="chart1"></div>
+        <div id="chart2"></div>
+    </div>
+
+    <script>
+        var chart1 = echarts.init(document.getElementById('chart1'));
+        var chart2 = echarts.init(document.getElementById('chart2'));
+
+        // 左侧图表：女性就业率与平均月薪
+        var option1 = {
+            title: {
+                text: '女性就业率与平均月薪（元）',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'cross' }
+            },
+            legend: {
+                top: 'bottom',
+                data: ['平均月薪', '女性就业率']
+            },
+            xAxis: [
+                { type: 'category', data: ['2018年', '2019年', '2020年', '2021年', '2022年'] }
+            ],
+            yAxis: [
+                { 
+                    type: 'value', 
+                    name: '平均月薪（元）',
+                    min: 4000, 
+                    max: 9000 
+                },
+                { 
+                    type: 'value', 
+                    name: '女性就业率（%）',
+                    min: 4.6, 
+                    max: 5.6,
+                    axisLabel: { formatter: '{value} %' }
+                }
+            ],
+            series: [
+                {
+                    name: '平均月薪',
+                    type: 'bar',
+                    data: [6497, 6995, 6847, 7017, 8545],
+                    itemStyle: { color: '#8C4A38' }
+                },
+                {
+                    name: '女性就业率',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [5.1, 5.0, 5.15, 4.79, 5.05],
+                    lineStyle: { color: '#D4A73B', width: 2 },
+                    symbol: 'circle',
+                    symbolSize: 8
+                }
+            ]
+        };
+
+        // 右侧图表：社会失业率
+        var option2 = {
+            title: {
+                text: '社会失业率',
+                left: 'center'
+            },
+            tooltip: { trigger: 'axis' },
+            xAxis: {
+                type: 'category',
+                data: ['2018年', '2019年', '2020年', '2021年', '2022年']
+            },
+            yAxis: {
+                type: 'value',
+                min: 4.8,
+                max: 5.6,
+                axisLabel: { formatter: '{value} %' }
+            },
+            series: [
+                {
+                    name: '失业率',
+                    type: 'line',
+                    data: [4.9, 5.2, 5.2, 5.1, 5.5],
+                    lineStyle: { color: '#8C4A38', width: 2 },
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    itemStyle: { color: '#8C4A38' }
+                }
+            ]
+        };
+
+        chart1.setOption(option1);
+        chart2.setOption(option2);
+    </script>
+</body>
+</html>

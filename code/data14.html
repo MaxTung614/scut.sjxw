@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>离婚冷静期下的焦虑图景</title>
+    <script src="js/echarts.min.js"></script>
+    <style>
+        #main {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('main'));
+
+        var option = {
+            title: {
+                text: '离婚冷静期下的焦虑图景',
+                left: 'center',
+                textStyle: { fontSize: 20, fontWeight: 'bold' }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}: {c} 条'
+            },
+            series: [
+                {
+                    type: 'sankey',
+                    layout: 'none',
+                    emphasis: {
+                        focus: 'adjacency'
+                    },
+                    nodeAlign: 'justify',
+                    data: [
+                        { name: '婚内事务' },
+                        { name: '两性关系' },
+                        { name: '登记办理' },
+                        { name: '妇女拐卖' },
+                        { name: '婚育问题' },
+                        { name: '财产纠纷' },
+                        { name: '出轨纠纷' },
+                        { name: '办理登记' },
+                        { name: '拐卖妇女' },
+                        { name: '婚育意愿' },
+                        { name: '家庭暴力' },
+                        { name: '家庭关系' },
+                        { name: '情感纠葛' },
+                        { name: '生育问题' }
+                    ],
+                    links: [
+                        { source: '婚内事务', target: '财产纠纷', value: 2235 },
+                        { source: '婚内事务', target: '出轨纠纷', value: 2235 },
+                        { source: '登记办理', target: '办理登记', value: 2235 },
+                        { source: '两性关系', target: '情感纠葛', value: 1479 },
+                        { source: '登记办理', target: '拐卖妇女', value: 1081 },
+                        { source: '婚育问题', target: '婚育意愿', value: 1024 },
+                        { source: '婚育问题', target: '生育问题', value: 1509 },
+                        { source: '两性关系', target: '家庭关系', value: 1081 },
+                        { source: '婚内事务', target: '家庭暴力', value: 1081 }
+                    ],
+                    label: {
+                        color: '#000',
+                        fontSize: 12
+                    },
+                    lineStyle: {
+                        color: 'gradient',
+                        curveness: 0.5
+                    }
+                }
+            ]
+        };
+
+        chart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/echarts.min.js"></script>
+		<style>
+			#container {
+				width: 800px;
+				height: 700px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script>
+		var myChart = echarts.init(document.getElementById("container"))
+		const option = {
+            title: {
+                text: '15岁及以上人口相关数据',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                type: 'shadow'
+                }
+            },
+            legend: {
+                top: '10%',
+                data: [
+                '总人口数',
+                '男性人口数',
+                '女性人口数',
+                '未婚人口数',
+                '离婚人口数',
+                '丧偶人口数'
+                ]
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['2022年', '2021年', '2019年', '2018年', '2017年', '2016年', '2015年', '2014年', '2013年']
+            },
+            yAxis: {
+                type: 'value',
+                name: '人数 (人)'
+            },
+            series: [
+                {
+                name: '总人口数',
+                type: 'line',
+                data: [1199109, 1232677, 908609, 951685, 952893, 965321, 17790430, 938993, 934935],
+                lineStyle: {
+                    width: 2,
+                    type: 'solid'
+                },
+                symbol: 'circle'
+                },
+                {
+                name: '男性人口数',
+                type: 'bar',
+                stack: '总量',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [607967, 625238, 459235, 481358, 482331, 488944, 9011377, 475585, 474125]
+                },
+                {
+                name: '女性人口数',
+                type: 'bar',
+                stack: '总量',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [591141, 607439, 449374, 470327, 470561, 476376, 8779053, 463408, 460810]
+                },
+                {
+                name: '未婚人口数',
+                type: 'bar',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [236783, 238753, 163714, 172875, 177158, 182568, 3495613, 184889, 188708]
+                },
+                {
+                name: '离婚人口数',
+                type: 'bar',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [28878, 29002, 20530, 20082, 19110, 18408, 304884, 16291, 14778]
+                },
+                {
+                name: '丧偶人口数',
+                type: 'bar',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [68901, 69725, 51947, 53360, 52740, 53577, 978571, 50409, 50692]
+                }
+            ]
+        };
+
+    myChart.setOption(option);
+
+	</script>
+</html>

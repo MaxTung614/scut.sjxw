@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Cloud</title>
+    <script src="js/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px; height: 400px;"></div>
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+        
+        // 数据配置
+        option = {
+            title: {
+                text: '婚姻与结婚主题词云',
+                left: 'center',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bold'
+                }
+            },
+            series: [{
+                type: 'wordCloud',
+                shape: 'heart', // 心形
+                gridSize: 8,    // 网格大小
+                sizeRange: [10, 60], // 字体大小范围
+                rotationRange: [-45, 45], // 旋转角度范围
+                textStyle: {
+                    color: function () {
+                        return 'rgb(' +
+                            Math.round(Math.random() * 255) + ', ' +
+                            Math.round(Math.random() * 255) + ', ' +
+                            Math.round(Math.random() * 255) + ')';
+                    }
+                },
+                // 词云的数据
+                data: [
+                    {name: '婚姻', value: 100},
+                    {name: '结婚', value: 80},
+                    {name: '登记', value: 75},
+                    {name: '需要', value: 70},
+                    {name: '没有', value: 65},
+                    {name: '感情', value: 60},
+                    {name: '申请', value: 55},
+                    {name: '办理', value: 50},
+                    {name: '证明', value: 45},
+                    {name: '法律', value: 40},
+                    {name: '出轨', value: 35},
+                    {name: '爱情', value: 30},
+                    {name: '夫妻', value: 28},
+                    {name: '单身', value: 25},
+                    {name: '责任', value: 20}
+                ]
+            }]
+        };
+        
+        // 设置配置项
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
